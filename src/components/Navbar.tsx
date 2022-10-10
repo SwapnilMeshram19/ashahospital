@@ -1,30 +1,48 @@
-import React from 'react'
+import React from "react";
+import AshaLogo from '../assets/AshaLogo.png'
 export const Navbar = () => {
-
-
   return (
-<div className="navbar bg-base-100">
-  <div className="flex-1">
-    <a className="btn btn-ghost normal-case text-xl">daisyUI</a>
-  </div>
-  <div className="flex-none">
-    <ul className="list-none menu menu-horizontal p-0 font-size">
-      <li><a>Item 1</a></li>
-      <li tabIndex={0}>
-        <a>
-          Parent
-          <svg className="fill-current" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"/></svg>
-        </a>
-        <ul className="p-2 bg-base-10 list-none">
-          <li><a>Submenu 1</a></li>
-          <li><a>Submenu 2</a></li>
+    <div className="sticky h-auto border-2 top-0 z-10 flex justify-between bg-white text-gray-500 shadow-lg hover:text-gray-700 focus:text-gray-700">
+      <div className=" flex flex-1 justify-between">
+        <img src={AshaLogo} className="p-2 ml-20"/>
+        <ul className="absolute right-0 z-10 w-auto list-style-none mr-auto flex ">
+          <li className="p-2 ">
+            <a
+              className="p-0 text-gray-500 hover:text-blue-500 hover:border-b-2 hover:border-blue-500 focus:text-gray-700"
+              href="#"
+            >
+              About Us
+            </a>
+          </li>
+          <li className=" p-2">
+            <a
+              className="p-0 text-gray-500 hover:text-blue-500 hover:border-b-2 hover:border-blue-500 focus:text-gray-700"
+              href="#"
+            >
+              Career
+            </a>
+          </li>
+          <li className="p-2">
+            <a
+              className="p-0 text-gray-500 hover:text-blue-500 hover:border-b-2 hover:border-blue-500 focus:text-gray-700"
+              href="#"
+            >
+              Enquiry Now
+            </a>
+          </li>
+          <li className="p-2">
+            <a
+              className="p-0 text-gray-500 hover:text-blue-500 hover:border-b-2 hover:border-blue-500 focus:text-gray-700"
+              href="#"
+            >
+              Feedback
+            </a>
+          </li>
         </ul>
-      </li>
-      <li><a>Item 3</a></li>
-    </ul>
-  </div>
-</div>
-
-    
+  
+      </div>
+   
+      
+    </div>
   );
 };
