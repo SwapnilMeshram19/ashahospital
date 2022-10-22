@@ -1,28 +1,67 @@
-import React from "react";
+import React, { useState } from "react";
+import { Link, NavLink } from "react-router-dom";
 import AshaLogo from "../assets/AshaLogo.png";
+import { SpecialitiesDropdown } from "./SpecialitiesDropdown";
 export const Navbar = () => {
+  const [dropDown, setDropDown] = useState<boolean>(false);
+
+  let activeStyle = {
+    textDecoration: "underline",
+  };
+  let navLinkStyle={
+    "&hover":"color:blue"
+  }
+
+  let activeClassName = "text-blue-600";
   return (
-    <div className="sticky top-0 z-10 flex h-auto justify-between border-2 bg-white align-middle text-gray-500 shadow-lg hover:text-gray-700 focus:text-gray-700">
-      <div className=" flex flex-1 items-center justify-between">
-        <img src={AshaLogo} className="ml-20 p-2" />
-        <ul className="list-style-none absolute right-0 z-10 mr-auto flex w-auto items-center text-gray-900">
-          <li className="p-2  ">
-            <a
-              className="p-0  hover:text-blue-500  focus:text-gray-700"
-              href="#"
+    <div className="sticky w-full top-0 z-10 flex h-auto justify-between border-2 bg-white align-middle text-gray-500 shadow-lg hover:text-gray-700 focus:text-gray-700">
+      <div className="flex flex-1 items-center justify-between">
+        <img src={AshaLogo} className="ml-20 p-2 pl-0" />
+        <ul className="list-style-none z-10 mr-auto absolute right-2 flex h-full items-center text-gray-900">
+          <li className="p-2 h-full flex items-center">
+            <NavLink
+              to={"/home"}
+              
+              className={({ isActive }) =>
+              isActive ? activeClassName : "p-0  hover:text-blue-600  focus:text-gray-700 active:text-blue-600"
+            }
+          
             >
               Home
-            </a>
+            </NavLink>
+            
           </li>
-          <li className=" flex items-center p-2 hover:text-blue-500">
-            <a className="mr-1   p-0 focus:text-gray-700" href="#">
+          <li
+            className="flex h-full items-center p-2 hover:text-blue-600"
+            onClick={() => setDropDown(!dropDown)}
+            onMouseEnter={() => setDropDown(true)}
+            onMouseLeave={() => setDropDown(false)}
+          >
+            <NavLink
+              to={"/"}
+              className={({ isActive }) =>
+              isActive ? activeClassName : "p-0  hover:text-blue-600  focus:text-gray-700 active:text-blue-600"
+            }
+            >
               Specialities
-            </a>
-            <svg
+            </NavLink>
+            {
+              dropDown?<svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 20 20"
               fill="currentColor"
-              className="h-4 w-4"
+              className="h-4 w-4 cursor-pointer"
+            >
+              <path
+                fillRule="evenodd"
+                d="M11.47 7.72a.75.75 0 011.06 0l7.5 7.5a.75.75 0 11-1.06 1.06L12 9.31l-6.97 6.97a.75.75 0 01-1.06-1.06l7.5-7.5z"
+                clipRule="evenodd"
+              />
+            </svg>:<svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+              className="h-4 w-4 cursor-pointer"
             >
               <path
                 fill-rule="evenodd"
@@ -30,18 +69,23 @@ export const Navbar = () => {
                 clip-rule="evenodd"
               />
             </svg>
+            }
+            
+            
           </li>
-          <li className="p-2">
-            <a
-              className="p-0 hover:text-blue-500   focus:text-gray-700"
-              href="#"
+          <li className="p-2 h-full flex items-center">
+            <NavLink
+              to={"/doctors"}
+              className={({ isActive }) =>
+              isActive ? activeClassName : "p-0  hover:text-blue-600  focus:text-gray-700 active:text-blue-600"
+            }
             >
               Doctors
-            </a>
+            </NavLink>
           </li>
           <li className="p-2">
             <a
-              className="p-0 hover:text-blue-500   focus:text-gray-700"
+              className="p-0 hover:text-blue-600   focus:text-gray-700"
               href="#"
             >
               Empanelment
@@ -49,7 +93,7 @@ export const Navbar = () => {
           </li>
           <li className="p-2">
             <a
-              className="p-0 hover:text-blue-500   focus:text-gray-700"
+              className="p-0 hover:text-blue-600   focus:text-gray-700"
               href="#"
             >
               Events
@@ -57,13 +101,14 @@ export const Navbar = () => {
           </li>
           <li className="p-2">
             <a
-              className="p-0 hover:text-blue-500   focus:text-gray-700"
+              className="p-0 hover:text-blue-600   focus:text-gray-700"
               href="#"
             >
               Contact Us
             </a>
           </li>
         </ul>
+        {dropDown && <SpecialitiesDropdown setDropDown={setDropDown} />}
       </div>
     </div>
   );
