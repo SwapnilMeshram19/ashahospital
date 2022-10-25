@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
-import AshaLogo from "../assets/AshaLogo.png";
+import AshaLogo from "../assets/asha_logo.png";
 import { SpecialitiesDropdown } from "./SpecialitiesDropdown";
 export const Navbar = () => {
   const [dropDown, setDropDown] = useState<boolean>(false);
 
   let activeStyle = {
     textDecoration: "underline",
+    
   };
   let navLinkStyle={
     "&hover":"color:blue"
@@ -16,14 +17,14 @@ export const Navbar = () => {
   return (
     <div className="sticky w-full top-0 z-10 flex h-auto justify-between border-2 bg-white align-middle text-gray-500 shadow-lg hover:text-gray-700 focus:text-gray-700">
       <div className="flex flex-1 items-center justify-between">
-        <img src={AshaLogo} className="ml-20 p-2 pl-0" />
+        <img src={AshaLogo} className="ml-20 p-0 pl-0 w-[25%]" />
         <ul className="list-style-none z-10 mr-auto absolute right-2 flex h-full items-center text-gray-900">
           <li className="p-2 h-full flex items-center">
             <NavLink
               to={"/home"}
               
               className={({ isActive }) =>
-              isActive ? activeClassName : "p-0  hover:text-blue-600  focus:text-gray-700 active:text-blue-600"
+              isActive ? activeClassName : "p-0 text-gray-500 hover:text-blue-600  focus:text-gray-700 active:text-blue-600"
             }
           
             >
@@ -38,9 +39,9 @@ export const Navbar = () => {
             onMouseLeave={() => setDropDown(false)}
           >
             <NavLink
-              to={"/"}
+              to={"/specialities"}
               className={({ isActive }) =>
-              isActive ? activeClassName : "p-0  hover:text-blue-600  focus:text-gray-700 active:text-blue-600"
+              isActive ? activeClassName : "p-0 text-gray-500 hover:text-blue-600  focus:text-gray-700 active:text-blue-600 active:border-2 active:border-sky-800"
             }
             >
               Specialities
@@ -64,9 +65,9 @@ export const Navbar = () => {
               className="h-4 w-4 cursor-pointer"
             >
               <path
-                fill-rule="evenodd"
+                fillRule="evenodd"
                 d="M12.53 16.28a.75.75 0 01-1.06 0l-7.5-7.5a.75.75 0 011.06-1.06L12 14.69l6.97-6.97a.75.75 0 111.06 1.06l-7.5 7.5z"
-                clip-rule="evenodd"
+                clipRule="evenodd"
               />
             </svg>
             }
@@ -77,7 +78,7 @@ export const Navbar = () => {
             <NavLink
               to={"/doctors"}
               className={({ isActive }) =>
-              isActive ? activeClassName : "p-0  hover:text-blue-600  focus:text-gray-700 active:text-blue-600"
+              isActive ? activeClassName : "p-0 text-gray-500  hover:text-blue-600  focus:text-gray-700 active:text-blue-600"
             }
             >
               Doctors

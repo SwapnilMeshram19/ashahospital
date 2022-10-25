@@ -5,6 +5,7 @@ import {Routes, Route} from 'react-router-dom';
 import { Home } from './Home';
 import { Doctors } from './Doctors';
 import { AdminLogin } from './AdminLogin';
+import { Specialities } from './Specialities';
 
 export const Pages =()=>{
 
@@ -19,6 +20,7 @@ export const Pages =()=>{
            <Route path='/' element={<Home/>}></Route>
             <Route path='/home' element={<Home/>}></Route>
             <Route path='/doctors' element={<Doctors/>}></Route>
+            <Route path='/specialities' element={<Specialities/>}></Route>
             <Route path='/admin-login' element={<AdminLogin/>}></Route>
            </Routes>
 
