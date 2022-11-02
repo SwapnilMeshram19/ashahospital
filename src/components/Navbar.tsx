@@ -92,13 +92,15 @@ export const Navbar = () => {
               Empanelment
             </a>
           </li>
-          <li className="p-2">
-            <a
-              className="p-0 hover:text-blue-600   focus:text-gray-700"
-              href="#"
+          <li className="p-2 h-full flex items-center">
+            <NavLink
+              to={"/add-event"}
+              className={({ isActive }) =>
+              isActive ? activeClassName : "p-0 text-gray-500  hover:text-blue-600  focus:text-gray-700 active:text-blue-600"
+            }
             >
               Events
-            </a>
+            </NavLink>
           </li>
           <li className="p-2">
             <a
