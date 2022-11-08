@@ -1,15 +1,24 @@
-import React, { useState } from "react";
+import React, {useState } from "react";
 export const AddEvent = () => {
-  const [selectedPhotos, setSelectedPhotos] = useState<[]>([]);
-  const photoHandleChange = () => {
-
+  const [selectedPhotos, setSelectedPhotos] = useState<string[]>([]);
+  const photoHandleChange = (e:React.ChangeEvent<HTMLInputElement>) => {
+    // console.log(e.target.files);
+    if(e.target.files){
+      const fileArray=Array.from(e.target.files).map((file)=>URL.createObjectURL(file))
+      // console.log(fileArray)
+      setSelectedPhotos((preImages)=>preImages.concat(fileArray))
+      Array.from(e.target.files).map(
+        (file:any)=>URL.revokeObjectURL(file)
+      )
+    }
 
   };
+  console.log(selectedPhotos);
   return (
     <div>
       <div>
         <div className="md:grid md:grid-cols-3 md:gap-6">
-          <div className="md:col-span-1">
+          <div className="md:col-span-1"> 
             <div className="px-4 sm:px-0">
               <h3 className="text-lg font-medium leading-6 text-gray-900">
                 Profile
@@ -85,14 +94,28 @@ export const AddEvent = () => {
                             id="file-upload"
                             name="file-upload"
                             type="file"
-                            onChange={()=>photoHandleChange()}
+                            onChange={photoHandleChange}
                             className="sr-only"
                             multiple
+                            accept="image/png, image/jpeg, image/jpg"
                           />
                         </label>
+                        <div className="block p-2 text-sm font-small text-gray-400">only .jpg / .jpeg / .png</div>
                       </div>
                     </div>
-                    <div className="mt-1 flex justify-center rounded-md border-2 border-dashed border-gray-300 px-6 pt-5 pb-6"></div>
+                    {
+                      selectedPhotos.length>0&&<div className="mt-1 h-auto flex justify-center flex-wrap rounded-md border-2 border-dashed border-gray-300 px-6 pt-5 pb-6">
+                      {
+                        selectedPhotos&&selectedPhotos.map((images)=><div key={images} className='flex flex-wrap w-1/3 '>
+                          <div className="w-full p-1 md:p-2">
+                          <img src={images} className='block object-fill w-72 h-72 rounded-lg'/>
+                          </div>
+                        </div>)
+                      }
+                    </div>
+                      
+                    }
+                    
                   </div>
                 </div>
                 <div className="bg-gray-50 px-4 py-3 text-right sm:px-6">
