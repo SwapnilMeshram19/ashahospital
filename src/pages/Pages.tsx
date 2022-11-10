@@ -24,8 +24,8 @@ export const Pages =()=>{
             <Route path='/doctors' element={<Doctors/>}></Route>
             <Route path='/specialities' element={<Specialities/>}></Route>
             <Route path='/admin-login' element={<AdminLogin/>}></Route>
-            <Route path='/event' element={<Event/>}></Route>
-            <Route path='/add-event' element={<AddEvent/>}></Route>
+            {/* <Route path='/event' element={<Event/>}></Route> */}
+            <Route path='/event/add' element={<AddEvent/>}></Route>
            </Routes>
 
         </div>

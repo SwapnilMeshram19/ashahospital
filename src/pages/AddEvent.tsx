@@ -1,24 +1,45 @@
-import React, {useState } from "react";
+import axios from "axios";
+import React, { useState } from "react";
+interface imageI {
+  name: string;
+  size: string;
+  type: string;
+  path: string;
+}
 export const AddEvent = () => {
-  const [selectedPhotos, setSelectedPhotos] = useState<string[]>([]);
-  const photoHandleChange = (e:React.ChangeEvent<HTMLInputElement>) => {
+  const [selectedPhotos, setSelectedPhotos] = useState<imageI[]>([]);
+  const photoHandleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     // console.log(e.target.files);
-    if(e.target.files){
-      const fileArray=Array.from(e.target.files).map((file)=>URL.createObjectURL(file))
-      // console.log(fileArray)
-      setSelectedPhotos((preImages)=>preImages.concat(fileArray))
-      Array.from(e.target.files).map(
-        (file:any)=>URL.revokeObjectURL(file)
-      )
-    }
+    if (e.target.files) {
+      const fileArray = Array.from(e.target.files).map((file) => ({
+        name: file.name,
+        size: file.size,
+        type: file.type,
+        path: URL.createObjectURL(file),
+      }));
 
+      fileArray.map((file) =>
+        setSelectedPhotos((prevImage: any) => [...prevImage, file])
+      );
+      Array.from(e.target.files).map((file: any) => URL.revokeObjectURL(file));
+    }
+  };
+
+  const addEventOnClick = () => {
+    axios({
+      method: "POST",
+      url: "http://localhost:8080/event/add",
+      data: {
+        path: selectedPhotos[0].path,
+      },
+    }).then((res) => console.log(res));
   };
   console.log(selectedPhotos);
   return (
     <div>
       <div>
         <div className="md:grid md:grid-cols-3 md:gap-6">
-          <div className="md:col-span-1"> 
+          <div className="md:col-span-1">
             <div className="px-4 sm:px-0">
               <h3 className="text-lg font-medium leading-6 text-gray-900">
                 Profile
@@ -30,7 +51,7 @@ export const AddEvent = () => {
             </div>
           </div>
           <div className="mt-5 md:col-span-2 md:mt-0">
-            <form action="#" method="POST" encType="multipart/form-data">
+            <form method="POST" encType="multipart/form-data">
               <div className="shadow sm:overflow-hidden sm:rounded-md">
                 <div className="space-y-6 bg-white px-4 py-5 sm:p-6">
                   <div className="col-span-6">
@@ -100,26 +121,36 @@ export const AddEvent = () => {
                             accept="image/png, image/jpeg, image/jpg"
                           />
                         </label>
-                        <div className="block p-2 text-sm font-small text-gray-400">only .jpg / .jpeg / .png</div>
+                        <div className="font-small block p-2 text-sm text-gray-400">
+                          only .jpg / .jpeg / .png
+                        </div>
                       </div>
                     </div>
-                    {
-                      selectedPhotos.length>0&&<div className="mt-1 h-auto flex justify-center flex-wrap rounded-md border-2 border-dashed border-gray-300 px-6 pt-5 pb-6">
-                      {
-                        selectedPhotos&&selectedPhotos.map((images)=><div key={images} className='flex flex-wrap w-1/3 '>
-                          <div className="w-full p-1 md:p-2">
-                          <img src={images} className='block object-fill w-72 h-72 rounded-lg'/>
-                          </div>
-                        </div>)
-                      }
-                    </div>
-                      
-                    }
-                    
+                    {selectedPhotos.length > 0 && (
+                      <div className="mt-1 flex h-auto flex-wrap justify-center rounded-md border-2 border-dashed border-gray-300 px-6 pt-5 pb-6">
+                        {selectedPhotos &&
+                          selectedPhotos.map((images) => (
+                            <div
+                              key={images.path}
+                              className="flex w-1/3 flex-wrap "
+                            >
+                              <div className="w-full p-1 md:p-2">
+                                <img
+                                  src={images.path}
+                                  className="block h-72 w-72 rounded-lg object-fill"
+                                />
+                              </div>
+                            </div>
+                          ))}
+                      </div>
+                    )}
                   </div>
                 </div>
                 <div className="bg-gray-50 px-4 py-3 text-right sm:px-6">
-                  <button className="inline-flex justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+                  <button
+                    onClick={() => addEventOnClick}
+                    className="inline-flex justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                  >
                     Save
                   </button>
                 </div>
