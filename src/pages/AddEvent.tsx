@@ -5,36 +5,76 @@ interface imageI {
   size: string;
   type: string;
   path: string;
+  base64: string;
 }
 export const AddEvent = () => {
   const [selectedPhotos, setSelectedPhotos] = useState<imageI[]>([]);
-  const photoHandleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const photoHandleChange = async(e: React.ChangeEvent<HTMLInputElement>) => {
     // console.log(e.target.files);
     if (e.target.files) {
-      const fileArray = Array.from(e.target.files).map((file) => ({
-        name: file.name,
-        size: file.size,
-        type: file.type,
-        path: URL.createObjectURL(file),
-      }));
+      // const fileArray = Array.from(e.target.files).map((file) => ({
+      //   name: file.name,
+      //   size: file.size,
+      //   type: file.type,
+      //   path: URL.createObjectURL(file),
+      //   base64: getBase64(file),
+      // }));
 
-      fileArray.map((file) =>
-        setSelectedPhotos((prevImage: any) => [...prevImage, file])
-      );
+    
       Array.from(e.target.files).map((file: any) => URL.revokeObjectURL(file));
+      console.log(e.target.files);
+      const imgArray = Array.from(e.target.files).map(async(file) =>({base64:getBase64(file)}));
+
+      console.log((await imgArray[0]).base64)
     }
   };
 
+ const getBase64 = (file:File) => {
+    return new Promise(resolve => {
+      let fileInfo;
+      let baseURL = "";
+      // Make new FileReader
+      let reader = new FileReader();
+
+      // Convert the file to base64 text
+      reader.readAsDataURL(file);
+
+      // on reader load somthing...
+      reader.onload = () => {
+        // Make a fileInfo Object
+        // console.log("Called", reader.result);
+       
+        // console.log(baseURL);
+        resolve(reader.result);
+      };
+      // console.log(fileInfo);
+    });
+  };
+
+  const onLoad = (fileString: string | ArrayBuffer | null) => {
+    return fileString;
+  };
+  // const getBase64 = (file: File,cb:any) => {
+  //   let reader = new FileReader();
+  //   reader.readAsDataURL(file);
+  //   reader.onload=()=>{
+  //     cb(reader.result);
+  //   }
+  //   reader.onerror=(error)=>{
+  //     console.log('Error:',error)
+  //   }
+
+  // };
   const addEventOnClick = () => {
     axios({
       method: "POST",
       url: "http://localhost:8080/event/add",
       data: {
-        path: selectedPhotos[0].path,
+        path: selectedPhotos[0],
       },
     }).then((res) => console.log(res));
   };
-  console.log(selectedPhotos);
+  // console.log(selectedPhotos);
   return (
     <div>
       <div>
@@ -51,7 +91,11 @@ export const AddEvent = () => {
             </div>
           </div>
           <div className="mt-5 md:col-span-2 md:mt-0">
-            <form method="POST" encType="multipart/form-data">
+            <form
+              method="POST"
+              encType="multipart/form-data"
+              onSubmit={addEventOnClick}
+            >
               <div className="shadow sm:overflow-hidden sm:rounded-md">
                 <div className="space-y-6 bg-white px-4 py-5 sm:p-6">
                   <div className="col-span-6">
@@ -126,7 +170,7 @@ export const AddEvent = () => {
                         </div>
                       </div>
                     </div>
-                    {selectedPhotos.length > 0 && (
+                    {/* {selectedPhotos.length > 0 && (
                       <div className="mt-1 flex h-auto flex-wrap justify-center rounded-md border-2 border-dashed border-gray-300 px-6 pt-5 pb-6">
                         {selectedPhotos &&
                           selectedPhotos.map((images) => (
@@ -143,12 +187,12 @@ export const AddEvent = () => {
                             </div>
                           ))}
                       </div>
-                    )}
+                    )} */}
                   </div>
                 </div>
                 <div className="bg-gray-50 px-4 py-3 text-right sm:px-6">
                   <button
-                    onClick={() => addEventOnClick}
+                    type="submit"
                     className="inline-flex justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
                   >
                     Save
