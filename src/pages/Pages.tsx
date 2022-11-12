@@ -25,7 +25,7 @@ export const Pages =()=>{
             <Route path='/specialities' element={<Specialities/>}></Route>
             <Route path='/admin-login' element={<AdminLogin/>}></Route>
             {/* <Route path='/event' element={<Event/>}></Route> */}
-            <Route path='/event/add' element={<AddEvent/>}></Route>
+            <Route path='/add' element={<AddEvent/>}></Route>
            </Routes>
 
         </div>

@@ -94,7 +94,7 @@ export const Navbar = () => {
           </li>
           <li className="p-2 h-full flex items-center">
             <NavLink
-              to={"/event/add"}
+              to={"/add"}
               className={({ isActive }) =>
               isActive ? activeClassName : "p-0 text-gray-500  hover:text-blue-600  focus:text-gray-700 active:text-blue-600"
             }

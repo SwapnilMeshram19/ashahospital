@@ -8,72 +8,51 @@ interface imageI {
   base64: string;
 }
 export const AddEvent = () => {
-  const [selectedPhotos, setSelectedPhotos] = useState<imageI[]>([]);
-  const photoHandleChange = async(e: React.ChangeEvent<HTMLInputElement>) => {
+  const [selectedPhotos, setSelectedPhotos] = useState<File[]>([]);
+  let formData=new FormData();
+  const photoHandleChange =(e: React.ChangeEvent<HTMLInputElement>) => {
     // console.log(e.target.files);
     if (e.target.files) {
-      // const fileArray = Array.from(e.target.files).map((file) => ({
-      //   name: file.name,
-      //   size: file.size,
-      //   type: file.type,
-      //   path: URL.createObjectURL(file),
-      //   base64: getBase64(file),
-      // }));
-
-    
-      Array.from(e.target.files).map((file: any) => URL.revokeObjectURL(file));
-      console.log(e.target.files);
-      const imgArray = Array.from(e.target.files).map(async(file) =>({base64:getBase64(file)}));
-
-      console.log((await imgArray[0]).base64)
+      let fileArray=Array.from(e.target.files).map((file:File)=>(file));
+      setSelectedPhotos((prevFile:any)=>[...prevFile,fileArray])
     }
+   
+    console.log(e.target.files)
+    
   };
-
- const getBase64 = (file:File) => {
-    return new Promise(resolve => {
-      let fileInfo;
-      let baseURL = "";
-      // Make new FileReader
-      let reader = new FileReader();
-
-      // Convert the file to base64 text
-      reader.readAsDataURL(file);
-
-      // on reader load somthing...
-      reader.onload = () => {
-        // Make a fileInfo Object
-        // console.log("Called", reader.result);
-       
-        // console.log(baseURL);
-        resolve(reader.result);
-      };
-      // console.log(fileInfo);
-    });
-  };
-
-  const onLoad = (fileString: string | ArrayBuffer | null) => {
-    return fileString;
-  };
-  // const getBase64 = (file: File,cb:any) => {
-  //   let reader = new FileReader();
-  //   reader.readAsDataURL(file);
-  //   reader.onload=()=>{
-  //     cb(reader.result);
-  //   }
-  //   reader.onerror=(error)=>{
-  //     console.log('Error:',error)
-  //   }
-
-  // };
+  console.log(selectedPhotos.flat())
+  selectedPhotos.forEach((file)=>{
+    formData.append('images',file)
+  })
+  console.log(formData)
+ 
   const addEventOnClick = () => {
+
+  
+    
     axios({
       method: "POST",
-      url: "http://localhost:8080/event/add",
-      data: {
-        path: selectedPhotos[0],
+      url: "http://localhost:8080/event/addevent",
+     
+      data:formData,
+      headers: {
+        "Content-Type": "multipart/form-data",
       },
-    }).then((res) => console.log(res));
-  };
+    }).then((res) => console.log(res)).catch((error)=>console.log(error));
+  //   axios
+  //     .post("http://localhost:8080/event/addevent", formData, {
+  //       headers: {
+  //         "Content-Type": "multipart/form-data",
+  //       },
+  //     })
+  //     .then((res) => {
+  //       console.log(res);
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  // };
+  }
   // console.log(selectedPhotos);
   return (
     <div>
@@ -92,9 +71,7 @@ export const AddEvent = () => {
           </div>
           <div className="mt-5 md:col-span-2 md:mt-0">
             <form
-              method="POST"
               encType="multipart/form-data"
-              onSubmit={addEventOnClick}
             >
               <div className="shadow sm:overflow-hidden sm:rounded-md">
                 <div className="space-y-6 bg-white px-4 py-5 sm:p-6">
@@ -151,13 +128,13 @@ export const AddEvent = () => {
                             strokeLinejoin="round"
                           />
                         </svg>
-                        <label htmlFor="file-upload">
+                        <label htmlFor="images">
                           <div className=" ml-5 cursor-pointer rounded-md border border-gray-300 bg-white py-2 px-3 text-sm font-medium leading-4 text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
                             Upload Photos
                           </div>
                           <input
-                            id="file-upload"
-                            name="file-upload"
+                            id="images"
+                            name="images"
                             type="file"
                             onChange={photoHandleChange}
                             className="sr-only"
@@ -192,7 +169,7 @@ export const AddEvent = () => {
                 </div>
                 <div className="bg-gray-50 px-4 py-3 text-right sm:px-6">
                   <button
-                    type="submit"
+                    onSubmit={()=>addEventOnClick()}
                     className="inline-flex justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
                   >
                     Save
