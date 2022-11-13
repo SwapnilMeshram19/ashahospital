@@ -33,19 +33,11 @@ export const AddEvent = () => {
   };
   return (
     <div>
-      <div>
-        <div className="md:grid md:grid-cols-3 md:gap-6">
-          <div className="md:col-span-1">
-            <div className="px-4 sm:px-0">
-              <h3 className="text-lg font-medium leading-6 text-gray-900">
-                Profile
-              </h3>
-              <p className="mt-1 text-sm text-gray-600">
-                This information will be displayed publicly so be careful what
-                you share.
-              </p>
-            </div>
-          </div>
+      <div className="flex flex-col items-center justify-center pt-5 pb-20">
+        <h1 className="w-[60%] bg-neutral-200 p-3 text-center text-2xl font-bold">
+          Add Event
+        </h1>
+        <div className="w-[60%]">
           <div className="mt-5 md:col-span-2 md:mt-0">
             {/* form */}
             <div>
@@ -149,9 +141,12 @@ export const AddEvent = () => {
                 <div className="bg-gray-50 px-4 py-3 text-right sm:px-6">
                   <button
                     onClick={addEventOnClick}
-                    className="inline-flex justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                    className="group relative inline-flex items-center justify-start overflow-hidden rounded-full border-2 bg-blue-600 px-5 py-3 font-medium transition-all hover:bg-white hover:border-2 hover:border-blue-600"
                   >
-                    Save
+                    <span className="absolute inset-0 rounded-full border-0 border-white transition-all duration-100 ease-linear group-hover:border-[25px]"></span>
+                    <span className="relative w-full text-left text-white transition-colors duration-200 ease-in-out group-hover:text-blue-600">
+                      Add Event
+                    </span>
                   </button>
                 </div>
               </div>
