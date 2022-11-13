@@ -1,59 +1,36 @@
 import axios from "axios";
 import React, { useState } from "react";
-interface imageI {
-  name: string;
-  size: string;
-  type: string;
-  path: string;
-  base64: string;
-}
 export const AddEvent = () => {
   const [selectedPhotos, setSelectedPhotos] = useState<File[]>([]);
-  let formData=new FormData();
-  const photoHandleChange =(e: React.ChangeEvent<HTMLInputElement>) => {
-    // console.log(e.target.files);
+  const [title, setTitle] = useState<string>("");
+  const [description, setDescription] = useState<string>("");
+  let formData = new FormData();
+  const photoHandleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files) {
-      let fileArray=Array.from(e.target.files).map((file:File)=>(file));
-      setSelectedPhotos((prevFile:any)=>[...prevFile,fileArray])
+      let fileArray = Array.from(e.target.files).map((file: File) => file);
+      setSelectedPhotos((prevFile: any) => [...prevFile, fileArray]);
     }
-   
-    console.log(e.target.files)
-    
   };
-  console.log(selectedPhotos.flat())
-  selectedPhotos.forEach((file)=>{
-    formData.append('images',file)
-  })
-  console.log(formData)
- 
-  const addEventOnClick = () => {
 
-  
-    
-    axios({
-      method: "POST",
-      url: "http://localhost:8080/event/addevent",
-     
-      data:formData,
-      headers: {
-        "Content-Type": "multipart/form-data",
-      },
-    }).then((res) => console.log(res)).catch((error)=>console.log(error));
-  //   axios
-  //     .post("http://localhost:8080/event/addevent", formData, {
-  //       headers: {
-  //         "Content-Type": "multipart/form-data",
-  //       },
-  //     })
-  //     .then((res) => {
-  //       console.log(res);
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
-  // };
-  }
-  // console.log(selectedPhotos);
+  const addEventOnClick = () => {
+    formData.append("title", title);
+    formData.append("description", description);
+    selectedPhotos.flat().forEach((file) => {
+      formData.append("images", file);
+    });
+    axios
+      .post("http://localhost:8080/event/addevent", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      })
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
   return (
     <div>
       <div>
@@ -70,9 +47,8 @@ export const AddEvent = () => {
             </div>
           </div>
           <div className="mt-5 md:col-span-2 md:mt-0">
-            <form
-              encType="multipart/form-data"
-            >
+            {/* form */}
+            <div>
               <div className="shadow sm:overflow-hidden sm:rounded-md">
                 <div className="space-y-6 bg-white px-4 py-5 sm:p-6">
                   <div className="col-span-6">
@@ -86,6 +62,8 @@ export const AddEvent = () => {
                       type="text"
                       name="title"
                       id="title"
+                      value={title}
+                      onChange={(e) => setTitle(e.target.value)}
                       className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                     />
                   </div>
@@ -101,8 +79,9 @@ export const AddEvent = () => {
                         id="about"
                         name="about"
                         rows={3}
+                        value={description}
+                        onChange={(e) => setDescription(e.target.value)}
                         className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
-                        defaultValue={""}
                       />
                     </div>
                   </div>
@@ -147,36 +126,36 @@ export const AddEvent = () => {
                         </div>
                       </div>
                     </div>
-                    {/* {selectedPhotos.length > 0 && (
-                      <div className="mt-1 flex h-auto flex-wrap justify-center rounded-md border-2 border-dashed border-gray-300 px-6 pt-5 pb-6">
+                    {selectedPhotos.length > 0 && (
+                      <div className="justify-left mt-1 flex h-auto flex-wrap rounded-md border-2 border-dashed border-gray-300 px-6 pt-5 pb-6">
                         {selectedPhotos &&
-                          selectedPhotos.map((images) => (
+                          selectedPhotos.flat().map((image) => (
                             <div
-                              key={images.path}
+                              key={URL.createObjectURL(image)}
                               className="flex w-1/3 flex-wrap "
                             >
                               <div className="w-full p-1 md:p-2">
                                 <img
-                                  src={images.path}
+                                  src={URL.createObjectURL(image)}
                                   className="block h-72 w-72 rounded-lg object-fill"
                                 />
                               </div>
                             </div>
                           ))}
                       </div>
-                    )} */}
+                    )}
                   </div>
                 </div>
                 <div className="bg-gray-50 px-4 py-3 text-right sm:px-6">
                   <button
-                    onSubmit={()=>addEventOnClick()}
+                    onClick={addEventOnClick}
                     className="inline-flex justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
                   >
                     Save
                   </button>
                 </div>
               </div>
-            </form>
+            </div>
           </div>
         </div>
       </div>
