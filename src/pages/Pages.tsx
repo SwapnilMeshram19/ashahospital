@@ -8,6 +8,7 @@ import { AdminLogin } from './AdminLogin';
 import { Specialities } from './Specialities';
 import { Event } from './Event';
 import { AddEvent } from './AddEvent';
+import { AddDoctor } from './AddDoctors';
 
 export const Pages =()=>{
 
@@ -26,6 +27,7 @@ export const Pages =()=>{
             <Route path='/admin-login' element={<AdminLogin/>}></Route>
             <Route path='/event' element={<Event/>}></Route>
             <Route path='/event/add' element={<AddEvent/>}></Route>
+            <Route path='/doctor/add' element={<AddDoctor/>}></Route>
            </Routes>
 
         </div>

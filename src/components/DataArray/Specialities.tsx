@@ -1,9 +1,9 @@
 import * as React from 'react';
-export interface specialities{
+export interface specialitiesI{
     _id?:string,
     name:string
 }
-export const Specialities:specialities[] = [
+export const specialities:specialitiesI[] = [
     {
         name:"Anaesthesiology"
     },
@@ -47,4 +47,19 @@ export const Specialities:specialities[] = [
         name:"Orthopedics"
     }
    
+]
+
+export interface doctorSpecialitiesI{
+    title:string
+}
+
+export const doctorSpecialities:doctorSpecialitiesI[]=[
+    {title:'General Physician'},
+    {title:'General Surgeon'},
+    {title:'Neuro Surgeon'},
+    {title:'Orthopedician'},
+    {title:'Gynaecologist'},
+    {title:'Onco Surgeon'},
+    {title:'Nephrologist'}
+
 ]
