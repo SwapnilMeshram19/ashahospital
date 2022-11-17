@@ -2,22 +2,23 @@ import axios from "axios";
 import React, { useState } from "react";
 import {doctorSpecialities} from "../components/DataArray/Specialities"
 export const AddDoctor = () => {
-  const [selectedPhoto, setSelectedPhoto] = useState<FileList|null>();
+  const [selectedPhoto, setSelectedPhoto] = useState<FileList|null>(null);
   const [name, setName] = useState<string>("");
   const [designation, setDesignation] = useState<string>("");
   const [specialities, setSpecialities] = useState<string>("");
   let formData = new FormData();
-  
-console.log(selectedPhoto)
+ 
+console.log()
 
   const addEventOnClick = () => {
     formData.append("name", name );
     formData.append("designation", designation);
     formData.append('specialities',specialities);
-    selectedPhotos.forEach((file) => {
-      formData.append("images", file);
-    });
-    
+    if(selectedPhoto){
+      formData.append('profile_photos',selectedPhoto[0])
+    }
+    console.log(formData)
+   
   };
   return (
     <div>
