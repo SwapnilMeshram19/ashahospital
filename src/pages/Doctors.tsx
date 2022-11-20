@@ -1,6 +1,6 @@
 import * as React from 'react';
 export const Doctors=()=>{
     return (<div>
-        <h1>Doctors</h1>
+        
     </div>)
 }

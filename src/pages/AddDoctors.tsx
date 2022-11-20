@@ -15,10 +15,19 @@ console.log()
     formData.append("designation", designation);
     formData.append('specialities',specialities);
     if(selectedPhoto){
-      formData.append('profile_photos',selectedPhoto[0])
+      formData.append('profile_photo',selectedPhoto[0])
     }
-    console.log(formData)
-   
+
+    axios.post("http://localhost:8080/doctor/addDoctor",formData,{
+      headers:{
+        "Content-Type":"multipart/form-data",
+      },
+    })
+    .then((res)=>{
+      console.log(res)
+    }).catch((error)=>{
+      console.log(error)
+    })
   };
   return (
     <div>
