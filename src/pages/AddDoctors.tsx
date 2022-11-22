@@ -1,7 +1,10 @@
 import axios from "axios";
 import React, { useState } from "react";
+import { AddSuccess } from "../components/AddSuccess";
 import {doctorSpecialities} from "../components/DataArray/Specialities"
 export const AddDoctor = () => {
+  const [openModel,setOpenModel]=useState<boolean>(false)
+
   const [selectedPhoto, setSelectedPhoto] = useState<FileList|null>(null);
   const [name, setName] = useState<string>("");
   const [designation, setDesignation] = useState<string>("");
@@ -24,13 +27,15 @@ console.log()
       },
     })
     .then((res)=>{
-      console.log(res)
+      if(res.data=="success"){
+        setOpenModel(true);
+      }
     }).catch((error)=>{
       console.log(error)
     })
   };
   return (
-    <div>
+    <div className=" relative">
       <div className="flex flex-col items-center justify-center pt-5 pb-20">
         <h1 className="w-2/6 bg-neutral-200 p-3 text-center text-2xl font-bold">
           Add Doctor
@@ -87,7 +92,7 @@ console.log()
                       >
                         <option>Select Specialities</option>
                         {
-                            doctorSpecialities.map((ele)=><option value={ele.title}>{ele.title}</option>)
+                            doctorSpecialities.map((ele)=><option value={ele.title} key={ele.title}>{ele.title}</option>)
 
                         }
                        
@@ -151,6 +156,9 @@ console.log()
           </div>
         </div>
       </div>
+      <AddSuccess open={openModel} title={"Doctor Added Successfully"}/>
+            
+
     </div>
   );
 };

@@ -9,6 +9,7 @@ import { Specialities } from './Specialities';
 import { Event } from './Event';
 import { AddEvent } from './AddEvent';
 import { AddDoctor } from './AddDoctors';
+import { AddSuccess } from '../components/AddSuccess';
 
 export const Pages =()=>{
 
@@ -28,6 +29,7 @@ export const Pages =()=>{
             <Route path='/event' element={<Event/>}></Route>
             <Route path='/event/add' element={<AddEvent/>}></Route>
             <Route path='/doctor/add' element={<AddDoctor/>}></Route>
+            {/* <Route path='/model' element={<AddSuccess/>}></Route> */}
            </Routes>
 
         </div>
