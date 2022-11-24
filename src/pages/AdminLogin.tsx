@@ -29,13 +29,12 @@ export const AdminLogin:FC = () => {
                   <div className="px-2 md:px-0 lg:w-[80%]">
                     <div className="md:mx-4 md:p-8">
                       <div className="text-center">
-                        <h4 className="mt-1 mb-12 pb-1 text-2xl font-semibold">
-                          Administrator Login
+                        <h4 className="mt-6 text-center text-3xl font-bold tracking-tight text-gray-900">
+                          Admin Login
                         </h4>
                       </div>
                       <form>
-                        <p className="mb-4">Please login to your account</p>
-                        <div className="mb-4">
+                        <div className="mb-4 mt-10">
                           <input
                             type="text"
                             value={name}
@@ -64,6 +63,8 @@ export const AdminLogin:FC = () => {
                           >
                             Log in
                           </button>
+                          <div className="w-full">
+                          </div>
                           <a className="text-gray-500" href="#!">
                             Forgot password?
                           </a>
