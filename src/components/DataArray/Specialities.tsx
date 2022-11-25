@@ -1,50 +1,64 @@
 import * as React from 'react';
 export interface specialitiesI{
-    _id?:string,
+    id?:number,
     name:string
 }
 export const specialities:specialitiesI[] = [
     {
-        name:"Anaesthesiology"
+        name:"Anaesthesiology",
+        id:1
     },
     {
-        name:"Critical Care"
+        name:"Critical Care",
+        id:1
     },
     {
-        name:"Cardiology"
+        name:"Cardiology",
+        id:1
     },
     {
-        name:"Dentistry"
+        name:"Dentistry",
+        id:1
     },
     {
-        name:"Dermatology"
+        name:"Dermatology",
+        id:1
     },
     {
-        name:"Diabetology"
+        name:"Diabetology",
+        id:1
     },
     {
-        name:"Ear Nose & Throat Surgery (ENT)"
+        name:"Ear Nose & Throat Surgery (ENT)",
+        id:1
     },
     {
-        name:"Gastroenterology"
+        name:"Gastroenterology",
+        id:1
     },
     {
-        name:"General & Laproscopic Surgery"
+        name:"General & Laproscopic Surgery",
+        id:1
     },
     {
-        name:"Gynecology"
+        name:"Gynecology",
+        id:1
     },
     {
-        name:"General Medicine"
+        name:"General Medicine",
+        id:1
     },
     {
-        name:"Nephrology & Urology"
+        name:"Nephrology & Urology",
+        id:1
     },
     {
-        name:"Neurology & Neurosurgery"
+        name:"Neurology & Neurosurgery",
+        id:1
     },
     {
-        name:"Orthopedics"
+        name:"Orthopedics",
+        id:1
     }
    
 ]
