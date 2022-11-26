@@ -7,16 +7,16 @@ export const AddDoctor = () => {
 
   const [selectedPhoto, setSelectedPhoto] = useState<FileList|null>(null);
   const [name, setName] = useState<string>("");
-  const [designation, setDesignation] = useState<string>("");
-  const [specialities, setSpecialities] = useState<string>("");
+  const [qualification, setqualification] = useState<string>("");
+  const [speciality, setspeciality] = useState<string>("");
   let formData = new FormData();
  
 console.log()
 
   const addEventOnClick = () => {
     formData.append("name", name );
-    formData.append("designation", designation);
-    formData.append('specialities',specialities);
+    formData.append("qualification", qualification);
+    formData.append('speciality',speciality);
     if(selectedPhoto){
       formData.append('profile_photo',selectedPhoto[0])
     }
@@ -67,30 +67,30 @@ console.log()
                       htmlFor="street-address"
                       className="block text-sm font-medium text-gray-700"
                     >
-                      Designation<span></span>
+                      qualification<span></span>
                     </label>
                     <input
                       type="text"
-                      name="designation"
-                      id="designation"
-                      value={designation}
-                      onChange={(e) => setDesignation(e.target.value)}
+                      name="qualification"
+                      id="qualification"
+                      value={qualification}
+                      onChange={(e) => setqualification(e.target.value)}
                       className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                     />
                   </div>
                   <div className="col-span-6 sm:col-span-3">
                       <label htmlFor="country" className="block text-sm font-medium text-gray-700">
-                        Specialities
+                        speciality
                       </label>
                       <select
-                        id="specialities"
-                        name="specialities"
+                        id="speciality"
+                        name="speciality"
                         autoComplete="speciality"
-                        value={specialities}
-                        onChange={(e:React.ChangeEvent<HTMLSelectElement>)=>setSpecialities(e.target.value)}
+                        value={speciality}
+                        onChange={(e:React.ChangeEvent<HTMLSelectElement>)=>setspeciality(e.target.value)}
                         className="mt-1 block w-full rounded-md border border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
                       >
-                        <option>Select Specialities</option>
+                        <option>Select speciality</option>
                         {
                             doctorSpecialities.map((ele)=><option value={ele.title} key={ele.title}>{ele.title}</option>)
 
