@@ -3,14 +3,10 @@ import { FilterCategory } from "../components/FilterCategory";
 import { Search } from "../components/Search";
 import { useFetchDoctorsQuery } from "../features/doctors/getDoctors";
 
-
-
-
 export const Doctors = () => {
+  const { data = null, isLoading } = useFetchDoctorsQuery();
 
-  const { data=null, isLoading } = useFetchDoctorsQuery();
-
-  console.log(data)
+  console.log(data);
 
   return (
     <div className="bg-white">
@@ -47,8 +43,26 @@ export const Doctors = () => {
               {/* Product grid */}
               <div className="lg:col-span-3">
                 {/* Replace with your content */}
-                <div className="h-96 rounded-lg border-4 border-dashed border-gray-200 lg:h-full" />
-                {/* /End replace */}
+                {isLoading ? (
+                  <div>loading...</div>
+                ) : (
+                  <div className=" rounded-lg border-gray-200 lg:h-full flex gap-10">
+                    {data && data.map((doctor) => <div key={doctor._id} className="w-64 max-w-sm rounded overflow-hidden shadow-xl p-4">
+                      <div className="w-40 h-40">
+                        <img src={`data:${doctor.profile_photo.contentType};base64,${doctor.profile_photo.imageBase64}`} className="w-full h-full object-fill rounded-full overflow-hidden shadow-xl" />
+                      </div>
+                      <div className="mt-4">
+                        <div className="text-lg">Dr. {doctor.name}</div>
+                        <div className="">Qualification</div>
+                        <div>{doctor.qualification}</div>
+                        <div className="">Speciality</div>
+                        <div>{doctor.speciality}</div>
+                      </div>
+
+
+                    </div>)}
+                  </div>
+                )}
               </div>
             </div>
           </section>

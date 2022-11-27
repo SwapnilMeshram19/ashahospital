@@ -7,7 +7,7 @@ export const Event=()=>{
     const [eventData,setEventData]=useState<eventI[]|null>(null)
     const { data=null, isLoading } = useFetchEventsQuery();
 
-    // console.log(data,isLoading)
+    console.log(data,isLoading)
 
     return (<div>
 

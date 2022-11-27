@@ -11,7 +11,7 @@ export interface doctorI{
     _id:string,
     name: string
     qualification:string,
-    specility:string,
+    speciality:string,
     profile_photo:doctorImgI
 }
 
@@ -22,7 +22,7 @@ export const doctorSlice=createApi({
     }),
     endpoints(builder){
         return{
-                fetchDoctors:builder.query<doctorI,void>({
+                fetchDoctors:builder.query<doctorI[],void>({
                 query(){
                     return '/getdoctors';
                 }
