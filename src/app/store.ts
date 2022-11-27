@@ -14,7 +14,7 @@ export const store=configureStore({
     reducer:rootReducer,
     middleware:(getDefaultMiddleware)=>{
         return getDefaultMiddleware().concat(adminLoginSlice.middleware);
-    }
+    },
 });
 
 export type AppDispatch = typeof store.dispatch;

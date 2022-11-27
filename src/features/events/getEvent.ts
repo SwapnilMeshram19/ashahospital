@@ -15,7 +15,7 @@ export interface eventI{
 }
 
 export const eventSlice=createApi({
-    reducerPath:'api',
+    reducerPath:'eventapi',
     baseQuery:fetchBaseQuery({
         baseUrl:'http://localhost:8080/event'
     }),

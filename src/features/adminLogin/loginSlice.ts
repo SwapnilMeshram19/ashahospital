@@ -33,4 +33,6 @@ export const adminLoginSlice=createApi({
     }
 });
 
+
+
 export const {usePostAdminLoginMutation} = adminLoginSlice;

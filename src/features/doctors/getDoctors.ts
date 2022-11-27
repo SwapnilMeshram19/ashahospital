@@ -16,7 +16,7 @@ export interface doctorI{
 }
 
 export const doctorSlice=createApi({
-    reducerPath:'api',
+    reducerPath:'doctorapi',
     baseQuery:fetchBaseQuery({
         baseUrl:'http://localhost:8080/doctor'
     }),
