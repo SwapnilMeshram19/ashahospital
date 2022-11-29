@@ -1,38 +1,40 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { AddSuccess } from "../components/AddSuccess";
-import {doctorSpecialities} from "../components/DataArray/Specialities"
+import { doctorSpecialities } from "../components/DataArray/Specialities";
 export const AddDoctor = () => {
-  const [openModel,setOpenModel]=useState<boolean>(false)
+  const [openModel, setOpenModel] = useState<boolean>(false);
 
-  const [selectedPhoto, setSelectedPhoto] = useState<FileList|null>(null);
+  const [selectedPhoto, setSelectedPhoto] = useState<FileList | null>(null);
   const [name, setName] = useState<string>("");
   const [qualification, setqualification] = useState<string>("");
   const [speciality, setspeciality] = useState<string>("");
   let formData = new FormData();
- 
-console.log()
+
+  console.log();
 
   const addEventOnClick = () => {
-    formData.append("name", name );
+    formData.append("name", name);
     formData.append("qualification", qualification);
-    formData.append('speciality',speciality);
-    if(selectedPhoto){
-      formData.append('profile_photo',selectedPhoto[0])
+    formData.append("speciality", speciality);
+    if (selectedPhoto) {
+      formData.append("profile_photo", selectedPhoto[0]);
     }
 
-    axios.post("http://localhost:8080/doctor/addDoctor",formData,{
-      headers:{
-        "Content-Type":"multipart/form-data",
-      },
-    })
-    .then((res)=>{
-      if(res.data=="success"){
-        setOpenModel(true);
-      }
-    }).catch((error)=>{
-      console.log(error)
-    })
+    axios
+      .post("http://localhost:8080/doctor/addDoctor", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      })
+      .then((res) => {
+        if (res.data == "success") {
+          setOpenModel(true);
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
   return (
     <div className=" relative">
@@ -79,25 +81,30 @@ console.log()
                     />
                   </div>
                   <div className="col-span-6 sm:col-span-3">
-                      <label htmlFor="country" className="block text-sm font-medium text-gray-700">
-                        speciality
-                      </label>
-                      <select
-                        id="speciality"
-                        name="speciality"
-                        autoComplete="speciality"
-                        value={speciality}
-                        onChange={(e:React.ChangeEvent<HTMLSelectElement>)=>setspeciality(e.target.value)}
-                        className="mt-1 block w-full rounded-md border border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
-                      >
-                        <option>Select speciality</option>
-                        {
-                            doctorSpecialities.map((ele)=><option value={ele.title} key={ele.title}>{ele.title}</option>)
-
-                        }
-                       
-                      </select>
-                    </div>
+                    <label
+                      htmlFor="country"
+                      className="block text-sm font-medium text-gray-700"
+                    >
+                      speciality
+                    </label>
+                    <select
+                      id="speciality"
+                      name="speciality"
+                      autoComplete="speciality"
+                      value={speciality}
+                      onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
+                        setspeciality(e.target.value)
+                      }
+                      className="mt-1 block w-full rounded-md border border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+                    >
+                      <option>Select speciality</option>
+                      {doctorSpecialities.map((ele) => (
+                        <option value={ele.title} key={ele.title}>
+                          {ele.title}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
 
                   <div>
                     <label className="block text-sm font-medium text-gray-700">
@@ -121,13 +128,17 @@ console.log()
                           />
                         </svg>
                         <label htmlFor="images">
-                          <div className=" w-32 truncate ml-5 cursor-pointer rounded-md border border-gray-300 bg-white py-2 px-3 text-sm font-medium leading-4 text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
-                           {selectedPhoto? selectedPhoto[0].name : "Select Photo"}
+                          <div className=" ml-5 w-32 cursor-pointer truncate rounded-md border border-gray-300 bg-white py-2 px-3 text-sm font-medium leading-4 text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+                            {selectedPhoto
+                              ? selectedPhoto[0].name
+                              : "Select Photo"}
                           </div>
                           <input
                             id="images"
                             type="file"
-                            onChange={(event)=>setSelectedPhoto(event.target.files)}
+                            onChange={(event) =>
+                              setSelectedPhoto(event.target.files)
+                            }
                             className="sr-only"
                             accept="image/png, image/jpeg, image/jpg"
                           />
@@ -137,13 +148,12 @@ console.log()
                         </div>
                       </div>
                     </div>
-                
                   </div>
                 </div>
                 <div className="bg-gray-50 px-4 py-3 text-right sm:px-6">
                   <button
                     onClick={addEventOnClick}
-                    className="group relative inline-flex items-center justify-start overflow-hidden rounded-full border-2 bg-blue-600 px-5 py-3 font-medium transition-all hover:bg-white hover:border-2 hover:border-blue-600"
+                    className="group relative inline-flex items-center justify-start overflow-hidden rounded-full border-2 bg-blue-600 px-5 py-3 font-medium transition-all hover:border-2 hover:border-blue-600 hover:bg-white"
                   >
                     <span className="absolute inset-0 rounded-full border-0 border-white transition-all duration-100 ease-linear group-hover:border-[25px]"></span>
                     <span className="relative w-full text-left text-white transition-colors duration-200 ease-in-out group-hover:text-blue-600">
@@ -156,9 +166,7 @@ console.log()
           </div>
         </div>
       </div>
-      <AddSuccess open={openModel} title={"Doctor Added Successfully"}/>
-            
-
+      <AddSuccess open={openModel} title={"Doctor Added Successfully"} />
     </div>
   );
 };

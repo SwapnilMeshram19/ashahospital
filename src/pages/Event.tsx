@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useFetchEventsQuery } from '../features/events/getEvent';
 import { eventI } from '../features/events/getEvent';
-import Slider1 from "../../src/assets/crousel-images/Slider1.png";
 import { EventCard } from '../components/eventComponents/EventCard';
 export const Event=()=>{
-    const [eventData,setEventData]=useState<eventI[]|null>(null)
     const { data=null, isLoading } = useFetchEventsQuery();
 
     console.log(data,isLoading)

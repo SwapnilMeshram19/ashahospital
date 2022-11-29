@@ -141,7 +141,7 @@ export const AddEvent = () => {
                 <div className="bg-gray-50 px-4 py-3 text-right sm:px-6">
                   <button
                     onClick={addEventOnClick}
-                    className="group relative inline-flex items-center justify-start overflow-hidden rounded-full border-2 bg-blue-600 px-5 py-3 font-medium transition-all hover:bg-white hover:border-2 hover:border-blue-600"
+                    className="group relative inline-flex items-center justify-start overflow-hidden rounded-full border-2 bg-blue-600 px-5 py-3 font-medium transition-all hover:border-2 hover:border-blue-600 hover:bg-white"
                   >
                     <span className="absolute inset-0 rounded-full border-0 border-white transition-all duration-100 ease-linear group-hover:border-[25px]"></span>
                     <span className="relative w-full text-left text-white transition-colors duration-200 ease-in-out group-hover:text-blue-600">

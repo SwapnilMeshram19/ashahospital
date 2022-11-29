@@ -1,9 +1,8 @@
-import * as React from 'react';
+import * as React from "react";
 export const Specialities = () => {
-    return (
-        <div>
-            <h1>Specialities</h1>
-
-        </div>
-    )
-}
+  return (
+    <div>
+      <h1>Specialities</h1>
+    </div>
+  );
+};

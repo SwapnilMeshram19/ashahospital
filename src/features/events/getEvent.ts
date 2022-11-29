@@ -1,28 +1,28 @@
-import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react';
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 
-export interface eventImgI{
-    filename:string,
-    contentType:string,
-    imageBase64:string,
+export interface eventImgI {
+    filename: string,
+    contentType: string,
+    imageBase64: string,
 }
 
-export interface eventI{
-    _id:string,
+export interface eventI {
+    _id: string,
     title: string
-    description:string,
-    images:eventImgI[]
+    description: string,
+    images: eventImgI[]
 }
 
-export const eventSlice=createApi({
-    reducerPath:'eventapi',
-    baseQuery:fetchBaseQuery({
-        baseUrl:'http://localhost:8080/event'
+export const eventSlice = createApi({
+    reducerPath: 'eventapi',
+    baseQuery: fetchBaseQuery({
+        baseUrl: 'http://localhost:8080/event'
     }),
-    endpoints(builder){
-        return{
-                fetchEvents:builder.query<eventI[],void>({
-                query(){
+    endpoints(builder) {
+        return {
+            fetchEvents: builder.query<eventI[], void>({
+                query() {
                     return '/getevents';
                 }
             })
@@ -30,4 +30,4 @@ export const eventSlice=createApi({
     }
 });
 
-export const {useFetchEventsQuery}=eventSlice;
+export const { useFetchEventsQuery } = eventSlice;

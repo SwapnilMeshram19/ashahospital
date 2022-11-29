@@ -1,19 +1,18 @@
 .scrollbar {
-    scrollbar-width: thin;
-    scrollbar-color: #000 #fff;
-  }
-  
-  
-  /* For Chrome, EDGE, Opera, Others */
-  .scrollbar::-webkit-scrollbar {
-    width: 7px;
-  }
-  
-  .scrollbar::-webkit-scrollbar-track { 
-    background: #fff;
-  }
-  
-  .scrollbar::-webkit-scrollbar-thumb { 
-    background:#287896;
-    border-radius:20px;
-  }
+  scrollbar-width: thin;
+  scrollbar-color: #000 #fff;
+}
+
+/* For Chrome, EDGE, Opera, Others */
+.scrollbar::-webkit-scrollbar {
+  width: 7px;
+}
+
+.scrollbar::-webkit-scrollbar-track {
+  background: #fff;
+}
+
+.scrollbar::-webkit-scrollbar-thumb {
+  background: #287896;
+  border-radius: 20px;
+}

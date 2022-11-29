@@ -12,7 +12,7 @@ export const EventCard: FC<propsI> = (props) => {
     <div className="w-80 rounded-lg bg-white shadow-lg">
       <div className="flex justify-center">
         <img
-          className="h-[250px] rounded-t-lg object-fit"
+          className="object-fit h-[250px] rounded-t-lg"
           src={`data:${data.images[0].contentType};base64,${data.images[0].imageBase64}`}
           alt=""
         />

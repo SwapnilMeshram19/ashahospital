@@ -46,21 +46,28 @@ export const Doctors = () => {
                 {isLoading ? (
                   <div>loading...</div>
                 ) : (
-                  <div className=" rounded-lg border-gray-200 lg:h-full flex gap-10">
-                    {data && data.map((doctor) => <div key={doctor._id} className="w-64 max-w-sm rounded overflow-hidden shadow-xl p-4">
-                      <div className="w-40 h-40">
-                        <img src={`data:${doctor.profile_photo.contentType};base64,${doctor.profile_photo.imageBase64}`} className="w-full h-full object-fill rounded-full overflow-hidden shadow-xl" />
-                      </div>
-                      <div className="mt-4">
-                        <div className="text-lg">Dr. {doctor.name}</div>
-                        <div className="">Qualification</div>
-                        <div>{doctor.qualification}</div>
-                        <div className="">Speciality</div>
-                        <div>{doctor.speciality}</div>
-                      </div>
-
-
-                    </div>)}
+                  <div className=" flex gap-10 rounded-lg border-gray-200 lg:h-full">
+                    {data &&
+                      data.map((doctor) => (
+                        <div
+                          key={doctor._id}
+                          className="w-64 max-w-sm overflow-hidden rounded p-4 shadow-xl"
+                        >
+                          <div className="h-40 w-40">
+                            <img
+                              src={`data:${doctor.profile_photo.contentType};base64,${doctor.profile_photo.imageBase64}`}
+                              className="h-full w-full overflow-hidden rounded-full object-fill shadow-xl"
+                            />
+                          </div>
+                          <div className="mt-4">
+                            <div className="text-lg">Dr. {doctor.name}</div>
+                            <div className="">Qualification</div>
+                            <div>{doctor.qualification}</div>
+                            <div className="">Speciality</div>
+                            <div>{doctor.speciality}</div>
+                          </div>
+                        </div>
+                      ))}
                   </div>
                 )}
               </div>

@@ -1,22 +1,22 @@
-import React,{useState,FC} from "react";
-import { usePostAdminLoginMutation} from "../features/adminLogin/loginSlice";
-type InputEvent =React.ChangeEvent<HTMLInputElement>;
-export const AdminLogin:FC = () => {
-  const [name,setName]=useState<string>("");
+import React, { useState, FC } from "react";
+import { usePostAdminLoginMutation } from "../features/adminLogin/loginSlice";
+type InputEvent = React.ChangeEvent<HTMLInputElement>;
+export const AdminLogin: FC = () => {
+  const [name, setName] = useState<string>("");
   const [password, setPassword] = useState<string>("");
-  const [postAdminLogin]=usePostAdminLoginMutation();
-  const [token,setToken]=useState<String|undefined>("");
+  const [postAdminLogin] = usePostAdminLoginMutation();
+  const [token, setToken] = useState<String | undefined>("");
 
- const login = async () =>{
-  const loginDetails={
-    name,
-    password
+  const login = async () => {
+    const loginDetails = {
+      name,
+      password,
+    };
+    console.log(loginDetails);
+    let res = await postAdminLogin(loginDetails).unwrap();
+    setToken(res.token);
   };
-  console.log(loginDetails)
-  let res=await postAdminLogin(loginDetails).unwrap();
-  setToken(res.token);
- }
- console.log(token)
+  console.log(token);
 
   return (
     <div>
@@ -40,8 +40,9 @@ export const AdminLogin:FC = () => {
                             value={name}
                             className="form-control m-0 block w-full rounded border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-1.5 text-base font-normal text-gray-700 transition ease-in-out focus:border-blue-600 focus:bg-white focus:text-gray-700 focus:outline-none"
                             placeholder="Username"
-                            
-                            onChange={(e:InputEvent):void=>setName(e.target.value)}
+                            onChange={(e: InputEvent): void =>
+                              setName(e.target.value)
+                            }
                           />
                         </div>
                         <div className="mb-4">
@@ -50,7 +51,9 @@ export const AdminLogin:FC = () => {
                             value={password}
                             className="form-control m-0 block w-full rounded border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-1.5 text-base font-normal text-gray-700 transition ease-in-out focus:border-blue-600 focus:bg-white focus:text-gray-700 focus:outline-none"
                             placeholder="Password"
-                            onChange = {(e:InputEvent):void=>setPassword(e.target.value)}
+                            onChange={(e: InputEvent): void =>
+                              setPassword(e.target.value)
+                            }
                           />
                         </div>
                         <div className="mb-12 pt-1 pb-1 text-center">
@@ -59,12 +62,11 @@ export const AdminLogin:FC = () => {
                             type="button"
                             data-mdb-ripple="true"
                             data-mdb-ripple-color="light"
-                            onClick={()=>login()}
+                            onClick={() => login()}
                           >
                             Log in
                           </button>
-                          <div className="w-full">
-                          </div>
+                          <div className="w-full"></div>
                           <a className="text-gray-500" href="#!">
                             Forgot password?
                           </a>
