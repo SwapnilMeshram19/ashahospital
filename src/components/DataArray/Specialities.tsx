@@ -74,4 +74,5 @@ export const doctorSpecialities: doctorSpecialitiesI[] = [
   { title: "Gynaecologist" },
   { title: "Onco Surgeon" },
   { title: "Nephrologist" },
+  {title:"Cardiologist"}
 ];

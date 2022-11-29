@@ -46,25 +46,25 @@ export const Doctors = () => {
                 {isLoading ? (
                   <div>loading...</div>
                 ) : (
-                  <div className=" flex gap-10 rounded-lg border-gray-200 lg:h-full">
+                  <div className="grid grid-cols-3 gap-10 rounded-lg  border-gray-200 lg:h-full">
                     {data &&
                       data.map((doctor) => (
                         <div
                           key={doctor._id}
-                          className="w-64 max-w-sm overflow-hidden rounded p-4 shadow-xl"
+                          className="w-72 max-w-sm overflow-hidden rounded p-4 shadow-xl"
                         >
-                          <div className="h-40 w-40">
+                          <div className="h-40 w-40 mt-5">
                             <img
                               src={`data:${doctor.profile_photo.contentType};base64,${doctor.profile_photo.imageBase64}`}
                               className="h-full w-full overflow-hidden rounded-full object-fill shadow-xl"
                             />
                           </div>
                           <div className="mt-4">
-                            <div className="text-lg">Dr. {doctor.name}</div>
-                            <div className="">Qualification</div>
-                            <div>{doctor.qualification}</div>
-                            <div className="">Speciality</div>
-                            <div>{doctor.speciality}</div>
+                            <div className="text-xl font-extrabold tracking-wide text-cyan-900">Dr. {doctor.name}</div>
+                            <div className="mt-4 font-bold">Qualification</div>
+                            <div className="leading-7">{doctor.qualification}</div>
+                            <div className="mt-4 font-bold">Speciality</div>
+                            <div className="leading-7">{doctor.speciality}</div>
                           </div>
                         </div>
                       ))}
