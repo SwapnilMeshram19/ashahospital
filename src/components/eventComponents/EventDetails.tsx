@@ -1,7 +1,14 @@
 import React from 'react';
+import { useParams } from 'react-router-dom';
+import { useFetchEventQuery } from '../../features/events/getEvent';
 
 export const EventDetails =()=>{
-
+    const {id}=useParams();
+    
+    const {data,isLoading}=useFetchEventQuery(id);
+    console.log(data)
+    
+    
     return(
         <div className="bg-white">
       <div>

@@ -25,9 +25,14 @@ export const eventSlice = createApi({
                 query() {
                     return '/getevents';
                 }
+            }),
+            fetchEvent:builder.query<eventI,string|undefined>({
+                query(id){
+                    return `/getevent?id=${id}`
+                }
             })
         }
     }
 });
 
-export const { useFetchEventsQuery } = eventSlice;
+export const { useFetchEventsQuery, useFetchEventQuery} = eventSlice;
