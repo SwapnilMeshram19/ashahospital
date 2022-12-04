@@ -1,6 +1,7 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import { useFetchEventQuery } from '../../features/events/getEvent';
+import { Loading } from '../Loading';
 
 export const EventDetails =()=>{
     const {id}=useParams();
@@ -11,6 +12,7 @@ export const EventDetails =()=>{
     
     return(
         <div className="bg-white">
+
       <div>
         <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex items-baseline justify-between border-b border-gray-200 pt-24 pb-6">

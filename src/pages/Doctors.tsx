@@ -1,6 +1,7 @@
 import { specialities } from "../components/DataArray/Specialities";
 import { DoctorCard } from "../components/doctorComponents/DoctorCard";
 import { FilterCategory } from "../components/FilterCategory";
+import { Loading } from "../components/Loading";
 import { Search } from "../components/Search";
 import { useFetchDoctorsQuery } from "../features/doctors/getDoctors";
 
@@ -45,7 +46,7 @@ export const Doctors = () => {
               <div className="lg:col-span-3">
                 {/* Replace with your content */}
                 {isLoading ? (
-                  <div>loading...</div>
+                  <Loading/>
                 ) : (
                   <div className="grid grid-cols-3 gap-10 rounded-lg  border-gray-200 lg:h-full">
                     {data &&

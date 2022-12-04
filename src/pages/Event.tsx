@@ -5,6 +5,7 @@ import { EventCard } from "../components/eventComponents/EventCard";
 import { FilterCategory } from "../components/FilterCategory";
 import { Search } from "../components/Search";
 import { specialities } from "../components/DataArray/Specialities";
+import { Loading } from "../components/Loading";
 export const Event = () => {
   const { data = null, isLoading } = useFetchEventsQuery();
 
@@ -46,7 +47,7 @@ export const Event = () => {
               <div className="lg:col-span-3">
                 {/* Replace with your content */}
                 {isLoading ? (
-                  <div>loading...</div>
+                  <Loading/>
                 ) : (
                   <div className="grid grid-cols-2 gap-10 rounded-lg  border-gray-200 lg:h-full">
                     {data &&
