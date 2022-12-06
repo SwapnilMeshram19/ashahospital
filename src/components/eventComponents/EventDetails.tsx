@@ -34,7 +34,7 @@ export const EventDetails = () => {
                       src={`data:${data.images[0].contentType};base64,${data.images[0].imageBase64}`}
                       className="w-full "
                     />
-                    <div className="mt-4 w-full bg-gray-200 p-3 py-6 ">
+                    <div className="my-6 w-full bg-gray-200 p-3 py-6 ">
                       {data.description}
                     </div>
                     <div>

@@ -2,8 +2,13 @@ import React from "react";
 import callIcon from "../assets/icons/callIcon.png";
 import appointmentIcon from "../assets/icons/appointmentIcon.png";
 import { HomeCrousel } from "../components/homePageComponents/HomeCrousel";
+import { Slider } from "../components/Slider";
+import { useFetchEventsQuery } from "../features/events/getEvent";
+import { Loading } from "../components/Loading";
 
 export const Home = () => {
+
+  const {data=null,isLoading}=useFetchEventsQuery();
   return (
     <div>
       <HomeCrousel />
@@ -34,6 +39,12 @@ export const Home = () => {
             Please Call for Inquiry and Appointment
           </p>
         </div>
+      </div>
+      <div>
+        {
+          isLoading?<Loading/>:data&&<Slider data={data}/>
+        }
+        
       </div>
     </div>
   );
