@@ -1,4 +1,3 @@
-import * as React from "react";
 export interface specialitiesI {
   id?: number;
   name: string;
