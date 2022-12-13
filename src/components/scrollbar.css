@@ -16,3 +16,8 @@
   background: #287896;
   border-radius: 20px;
 }
+
+.temporary-ping{
+  -webkit-animation-iteration-count: 1;
+  animation-iteration-count: 1;
+}

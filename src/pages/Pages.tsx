@@ -10,6 +10,8 @@ import { Event } from "./Event";
 import { AddEvent } from "./AddEvent";
 import { AddDoctor } from "./AddDoctors";
 import { EventDetails } from "../components/eventComponents/EventDetails";
+import { AddEmpanelment } from "./AddEmpanelment";
+import { Empanelment } from "./Empanelment";
 
 export const Pages = () => {
   return (
@@ -19,7 +21,6 @@ export const Pages = () => {
       <Routes>
         <Route path="/" element={<Navigate replace to="/home" />}></Route>
         <Route path="/home" element={<Home />}></Route>
-        <Route path="/doctors" element={<Doctors />}></Route>
         <Route path="/specialities" element={<Specialities />}></Route>
         <Route path="/admin-login" element={<AdminLogin />}></Route>
 
@@ -30,7 +31,15 @@ export const Pages = () => {
 
         {/* Doctor Routes */}
         <Route path="/doctor/add" element={<AddDoctor />}></Route>
+        <Route path="/doctors" element={<Doctors />}></Route>
+
         {/* <Route path='/model' element={<AddSuccess/>}></Route> */}
+
+
+        {/* Empanelment Routes */}
+        <Route path="/empanelment/add" element={<AddEmpanelment/>}></Route>
+        <Route path="/empanelments" element={<Empanelment />}></Route>
+
       </Routes>
     </div>
   );

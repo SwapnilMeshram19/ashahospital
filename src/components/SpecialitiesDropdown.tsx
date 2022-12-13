@@ -6,7 +6,7 @@ export const SpecialitiesDropdown: FC<{ setDropDown: any }> = ({
 }) => {
   return (
     <div
-      className="absolute top-full right-[16%] w-[20%] bg-[#f4f4f4]"
+      className="transition duration-50 absolute top-full right-[16%] w-[20%] bg-[#f4f4f4] animate-ping-one"
       onMouseEnter={() => setDropDown(true)}
       onMouseLeave={() => setDropDown(false)}
     >

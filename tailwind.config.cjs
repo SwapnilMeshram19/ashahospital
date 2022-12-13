@@ -5,7 +5,19 @@ module.exports = {
     './node_modules/tw-elements/dist/js/**/*.{js,jsx,ts,tsx}'
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        'manrope': 'Manrope, sans-serif',
+      },
+      animation: {
+        'ping-one': 'ping-animation 0.1s ease-in 1',
+      },
+      keyframes: {
+        'ping-animation': {
+        '0%, 0%': { transform: 'scale(0)', opacity:0 }
+        }
+      }
+    },
   },
   plugins: [
     require('tw-elements/dist/plugin'),

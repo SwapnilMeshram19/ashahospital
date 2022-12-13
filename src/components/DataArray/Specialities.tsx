@@ -75,3 +75,10 @@ export const doctorSpecialities: doctorSpecialitiesI[] = [
   { title: "Nephrologist" },
   {title:"Cardiologist"}
 ];
+
+export const empanelmentType:doctorSpecialitiesI[]=[
+  {title:"Government"},
+  {
+    title:"Private TPA"
+  }
+]

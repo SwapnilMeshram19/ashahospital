@@ -22,7 +22,7 @@ export const Slider: FC<sliderI> = ({ data }) => {
 
   console.log(data);
   return (
-    <div className="relative my-10 flex justify-center bg-gray-50 p-10">
+    <div className="relative flex justify-center ">
       <div
         id="slider"
         className=" scrollbar-hide relative flex w-11/12 gap-6 overflow-x-auto scroll-smooth py-2"
@@ -31,7 +31,7 @@ export const Slider: FC<sliderI> = ({ data }) => {
           data.map((e) => (
             <div className="relative flex p-4 drop-shadow-md rounded-md bg-white">
               <div className="relative w-96 ">
-                <div className=" py-2 text-lg font-medium text-sky-900 line-clamp-1">
+                <div className="py-2 text-lg font-black text-sky-900 line-clamp-1 tracking-wide">
                   {e.title}
                 </div>
                 <div className="">

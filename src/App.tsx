@@ -6,7 +6,7 @@ import { Pages } from "./pages/Pages";
 
 function App() {
   return (
-    <div>
+    <div className=" font-manrope">
       <Pages />
     </div>
   );

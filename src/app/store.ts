@@ -3,12 +3,14 @@ import { getDefaultMiddleware } from '@reduxjs/toolkit/dist/getDefaultMiddleware
 import { adminLoginSlice } from '../features/adminLogin/loginSlice'
 import { eventSlice } from '../features/events/getEvent';
 import { doctorSlice } from '../features/doctors/getDoctors';
+import { empanelmentSlice } from '../features/empanelment/getEmpanelments'
 
 
 const rootReducer = combineReducers({
     [adminLoginSlice.reducerPath]: adminLoginSlice.reducer,
     [eventSlice.reducerPath]: eventSlice.reducer,
-    [doctorSlice.reducerPath]: doctorSlice.reducer
+    [doctorSlice.reducerPath]: doctorSlice.reducer,
+    [empanelmentSlice.reducerPath]: empanelmentSlice.reducer,
 })
 export const store = configureStore({
     reducer: rootReducer,

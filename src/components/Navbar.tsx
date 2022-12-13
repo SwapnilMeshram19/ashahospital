@@ -41,7 +41,7 @@ export const Navbar = () => {
               className={({ isActive }) =>
                 isActive
                   ? activeClassName
-                  : "p-0 text-gray-500 hover:text-blue-600  focus:text-gray-700 active:border-2 active:border-sky-800 active:text-blue-600"
+                  : "p-0 text-gray-500 hover:text-blue-600  focus:text-gray-700 active:border-2 active:border-sky-800 active:text-blue-600 "
               }
             >
               Specialities
@@ -86,13 +86,17 @@ export const Navbar = () => {
               Doctors
             </NavLink>
           </li>
-          <li className="p-2">
-            <a
-              className="p-0 hover:text-blue-600   focus:text-gray-700"
-              href="#"
+          <li className="flex h-full items-center p-2">
+            <NavLink
+              to={"/empanelments"}
+              className={({ isActive }) =>
+                isActive
+                  ? activeClassName
+                  : "p-0 text-gray-500  hover:text-blue-600  focus:text-gray-700 active:text-blue-600"
+              }
             >
-              Empanelment
-            </a>
+              Empanelments
+            </NavLink>
           </li>
           <li className="flex h-full items-center p-2">
             <NavLink
