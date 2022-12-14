@@ -73,6 +73,7 @@ export const Navbar = () => {
                 />
               </svg>
             )}
+            {dropDown && <SpecialitiesDropdown setDropDown={setDropDown} />}
           </li>
           <li className="flex h-full items-center p-2">
             <NavLink
@@ -119,7 +120,6 @@ export const Navbar = () => {
             </a>
           </li>
         </ul>
-        {dropDown && <SpecialitiesDropdown setDropDown={setDropDown} />}
       </div>
     </div>
   );

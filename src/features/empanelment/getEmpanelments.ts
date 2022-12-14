@@ -25,9 +25,19 @@ export const empanelmentSlice = createApi({
                 query() {
                     return '/getempanelment';
                 }
+            }),
+            fetchGovernmentEmpanelments: builder.query<empanelmentI[], void>({
+                query() {
+                    return '/government';
+                }
+            }),
+            fetchPrivateEmpanelments: builder.query<empanelmentI[], void>({
+                query() {
+                    return '/private';
+                }
             })
         }
     }
 });
 
-export const { useFetchEmpanelmentsQuery } = empanelmentSlice;
+export const { useFetchEmpanelmentsQuery,useFetchGovernmentEmpanelmentsQuery,useFetchPrivateEmpanelmentsQuery } = empanelmentSlice;
