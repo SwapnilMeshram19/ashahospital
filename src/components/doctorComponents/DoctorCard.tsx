@@ -9,7 +9,7 @@ export const DoctorCard:FC<propsI>=(props)=>{
     const doctor=props.doctor;
     return (
         <div
-        className="w-72 max-w-sm overflow-hidden rounded p-4 shadow-xl"
+        className="w-72 max-w-sm overflow-hidden rounded p-4 shadow-xl border-2 border-gray-100"
       >
         <div className="h-40 w-40 mt-5">
           <img

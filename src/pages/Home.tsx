@@ -40,10 +40,12 @@ export const Home = () => {
           </p>
         </div>
       </div>
-      <div className="bg-gray-50 p-10 my-10 text-center">
-        <div className="text-5xl p-2 font-black tracking-wide">
+      <div className="p-2 text-4xl text-center tracking-wider font-black bg-orange-500 text-white mt-20">
           Events
         </div>
+      <div className="p-10 mb-10 text-center">
+        
+        
         
         {
           isLoading?<Loading/>:data&&<Slider data={data}/>

@@ -11,7 +11,7 @@ export const EventCard: FC<eventPropsI> = (props) => {
   const navigate=useNavigate();
 
   return (
-    <div className="rounded-lg bg-white shadow-lg">
+    <div className="rounded-lg bg-white shadow-lg border-2 border-gray-100">
       <div className="flex justify-center">
         <img
           className="h-[250px] rounded-t-lg object-cover"
@@ -20,7 +20,7 @@ export const EventCard: FC<eventPropsI> = (props) => {
         />
       </div>
       <div className="p-4">
-        <h5 className="text-xl font-extrabold tracking-wide text-sky-900">
+        <h5 className="text-xl font-extrabold tracking-wide text-sky-900 h-14">
           {data.title}
         </h5>
         <div className=" mt-4 text-base leading-5 text-slate-600 line-clamp-3">

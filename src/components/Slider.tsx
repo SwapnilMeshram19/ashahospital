@@ -29,7 +29,7 @@ export const Slider: FC<sliderI> = ({ data }) => {
       >
         {data &&
           data.map((e) => (
-            <div className="relative flex p-4 drop-shadow-md rounded-md bg-white">
+            <div className="relative flex p-4 drop-shadow-md border-2 border-gray-100 rounded-md bg-white">
               <div className="relative w-96 ">
                 <div className="py-2 text-lg font-black text-sky-900 line-clamp-1 tracking-wide">
                   {e.title}
@@ -73,7 +73,7 @@ export const Slider: FC<sliderI> = ({ data }) => {
 
       <div
         onClick={() => slideLeft()}
-        className="absolute top-1/2 right-10 flex cursor-pointer items-center justify-center rounded-full bg-gray-400 p-3 text-white opacity-70 hover:opacity-100"
+        className="absolute top-1/2 right-10 flex cursor-pointer items-center justify-center rounded-full bg-sky-900 p-3 text-white opacity-70 hover:opacity-100"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -92,7 +92,7 @@ export const Slider: FC<sliderI> = ({ data }) => {
       </div>
       <div
         onClick={() => slideRight()}
-        className="absolute top-1/2 left-10 flex cursor-pointer items-center justify-center rounded-full bg-gray-400 p-3 text-white opacity-70 hover:opacity-100"
+        className="absolute top-1/2 left-10 flex cursor-pointer items-center justify-center rounded-full bg-sky-900 p-3 text-white opacity-70 hover:opacity-100"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"

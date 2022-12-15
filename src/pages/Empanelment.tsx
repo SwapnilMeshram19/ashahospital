@@ -45,7 +45,7 @@ export const Empanelment = () => {
               <div className="lg:col-span-3">
                 <div>
                   <div>
-                    <div>Government</div>
+                    <div className="p-2 mb-10 text-2xl tracking-wider font-black bg-orange-500 text-white">Government</div>
 
                     {govLoading ? (
                       <Loading />
@@ -60,7 +60,7 @@ export const Empanelment = () => {
                   </div>
 
                   <div>
-                    <div>Private TPA</div>
+                    <div className="p-2 mb-10 text-2xl tracking-wider font-black bg-orange-500 text-white mt-10">Private TPA</div>
                     {privateLoading ? (
                       <Loading />
                     ) : (
