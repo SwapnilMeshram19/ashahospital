@@ -20,66 +20,76 @@ export const AdminLogin: FC = () => {
 
   return (
     <div>
-      <section className="gradient-form h-full bg-gray-200 md:h-screen">
-        <div className="container h-fit px-6 pt-16">
-          <div className="g-6 flex h-full flex-wrap items-center justify-center text-gray-800">
-            <div className="xl:w-[40%]">
-              <div className="block rounded-lg bg-white shadow-lg">
-                <div className="g-0 justify-center lg:flex lg:flex-wrap">
-                  <div className="px-2 md:px-0 lg:w-[80%]">
-                    <div className="md:mx-4 md:p-8">
-                      <div className="text-center">
-                        <h4 className="mt-6 text-center text-3xl font-bold tracking-tight text-gray-900">
-                          Admin Login
-                        </h4>
-                      </div>
-                      <form>
-                        <div className="mb-4 mt-10">
-                          <input
-                            type="text"
-                            value={name}
-                            className="form-control m-0 block w-full rounded border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-1.5 text-base font-normal text-gray-700 transition ease-in-out focus:border-blue-600 focus:bg-white focus:text-gray-700 focus:outline-none"
-                            placeholder="Username"
-                            onChange={(e: InputEvent): void =>
-                              setName(e.target.value)
-                            }
-                          />
-                        </div>
-                        <div className="mb-4">
-                          <input
-                            type="password"
-                            value={password}
-                            className="form-control m-0 block w-full rounded border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-1.5 text-base font-normal text-gray-700 transition ease-in-out focus:border-blue-600 focus:bg-white focus:text-gray-700 focus:outline-none"
-                            placeholder="Password"
-                            onChange={(e: InputEvent): void =>
-                              setPassword(e.target.value)
-                            }
-                          />
-                        </div>
-                        <div className="mb-12 pt-1 pb-1 text-center">
-                          <button
-                            className="mb-3 inline-block w-full rounded bg-blue-700 px-6 py-2.5 text-xs font-medium uppercase leading-tight text-white shadow-md transition duration-150 ease-in-out hover:bg-blue-700 hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-0 active:shadow-lg"
-                            type="button"
-                            data-mdb-ripple="true"
-                            data-mdb-ripple-color="light"
-                            onClick={() => login()}
-                          >
-                            Log in
-                          </button>
-                          <div className="w-full"></div>
-                          <a className="text-gray-500" href="#!">
-                            Forgot password?
-                          </a>
-                        </div>
-                      </form>
-                    </div>
+     
+      <div className="flex min-h-screen flex-col justify-center bg-gray-100 py-4 sm:py-10">
+        <div className="relative py-3 sm:mx-auto sm:max-w-xl">
+          <div className="absolute inset-0 -skew-y-6 transform bg-gradient-to-r from-blue-600 to-orange-600 shadow-lg sm:-rotate-6 sm:skew-y-0 sm:rounded-3xl"></div>
+          <div className="relative bg-white px-4 py-10 shadow-lg sm:rounded-3xl sm:p-20">
+            <div className="mx-auto max-w-md">
+              <div>
+                <h1 className="text-2xl font-semibold">Admin Login</h1>
+              </div>
+              <div className="divide-y divide-gray-200">
+                <div className="space-y-4 py-8 text-base leading-6 text-gray-700 sm:text-lg sm:leading-7">
+                  <div className="relative">
+                    <label
+                      htmlFor="email"
+                      className="peer-placeholder-shown:text-gray-440 text-sm text-gray-600 transition-all peer-placeholder-shown:top-2 peer-placeholder-shown:text-base peer-focus:-top-3.5 peer-focus:text-sm peer-focus:text-gray-600"
+                    >
+                      Email Address
+                    </label>
+
+                    <input
+                      autoComplete="off"
+                      id="email"
+                      name="email"
+                      type="text"
+                      className="focus:borer-rose-600 peer h-10 w-full border-b-2 border-gray-300 text-gray-900 placeholder-transparent focus:outline-none"
+                      placeholder="Email address"
+                      onChange={(e: InputEvent): void =>
+                        setName(e.target.value)
+                      }
+                    />
+                  </div>
+                  <div className="relative">
+                    <label
+                      htmlFor="password"
+                      className="  peer-placeholder-shown:text-gray-440 text-sm text-gray-600 transition-all peer-placeholder-shown:top-2 peer-placeholder-shown:text-base peer-focus:-top-3.5 peer-focus:text-sm peer-focus:text-gray-600"
+                    >
+                      Password
+                    </label>
+
+                    <input
+                      autoComplete="off"
+                      id="password"
+                      name="password"
+                      type="password"
+                      className="focus:borer-rose-600 peer h-10 w-full border-b-2 border-gray-300 text-gray-900 placeholder-transparent focus:outline-none"
+                      placeholder="Password"
+                      onChange={(e: InputEvent): void =>
+                        setPassword(e.target.value)
+                      }
+                    />
+                  </div>
+                  <div className="relative">
+                    <button
+                      className="mt-4 rounded-md bg-blue-500 px-2 py-1 text-white"
+                      onClick={() => login()}
+                    >
+                      Login
+                    </button>
+                  </div>
+                  <div className="relative">
+                    <a className="text-blue-500 text-sm " href="#!">
+                      Forgot password?
+                    </a>
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </section>
+      </div>
     </div>
   );
 };

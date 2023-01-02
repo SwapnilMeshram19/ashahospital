@@ -12,6 +12,8 @@ import { AddDoctor } from "./AddDoctors";
 import { EventDetails } from "../components/eventComponents/EventDetails";
 import { AddEmpanelment } from "./AddEmpanelment";
 import { Empanelment } from "./Empanelment";
+import { Footer } from "../components/Footer";
+import { AddNews } from "./AddNews";
 
 export const Pages = () => {
   return (
@@ -40,7 +42,13 @@ export const Pages = () => {
         <Route path="/empanelment/add" element={<AddEmpanelment/>}></Route>
         <Route path="/empanelments" element={<Empanelment />}></Route>
 
+        {/* News */}
+        <Route path="/news/add" element={<AddNews/>}></Route>
+
+
       </Routes>
+
+      <Footer/>
     </div>
   );
 };

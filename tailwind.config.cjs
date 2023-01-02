@@ -10,7 +10,7 @@ module.exports = {
         'manrope': 'Manrope, sans-serif',
       },
       animation: {
-        'ping-one': 'ping-animation 0.1s ease-in 1',
+        'ping-one': 'ping-animation 0.11s ease-in 1',
       },
       keyframes: {
         'ping-animation': {
